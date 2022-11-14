@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bukaFragment(new FragmentBeranda());
+        getSupportActionBar().setTitle("Beranda");
 
         bnvKulinerKita = findViewById(R.id.bnv_kuliner_kita);
         bnvKulinerKita.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void bukaFragment (Fragment FRG){
         FragmentManager FM = getSupportFragmentManager();
-        FragmentTransaction FT = FM.beginTransaction();
+        FragmentTransaction FT = getSupportFragmentManager();
         FT.replace(R.id.fl_container, FRG);
         FT.commit();
     }
